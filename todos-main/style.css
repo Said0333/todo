@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+.date-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.date {
+  display: flex;
+  gap: 10px;
+  margin-top: 100px;
+  font-size: 27px;
+  font-weight: 500;
+}
+.time {
+  font-size: 70px;
+}
+/* ----- task css ------- */
+.tasks {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+}
+#form {
+  display: flex;
+  width: 50%;
+  gap: 6px;
+}
+
+#change-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 6px;
+}
+.input-box {
+  width: 50%;
+  text-align: left;
+}
+#error-message {
+  color: red;
+  font-size: 13px;
+  width: 50%;
+  text-align: left;
+  margin-bottom: -15px;
+}
+#form input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+}
+#change-form input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 2px solid black;
+  border-radius: 40px;
+}
+
+#form input:focus {
+  border: none;
+}
+.tasks-list {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.list {
+  list-style: none;
+  color: white;
+  padding: 12px 10px;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.615);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-feture {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* ------ modal ------ */
+.modal {
+  background-color: black;
+  padding: 20px;
+  border-radius: 30px;
+  height: 250px;
+  width: 40%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 1000;
+}
+#cahnge-task {
+  padding: 12px 10px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 40px;
+  background-color: white;
+}
+.modal-header {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.441);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(8px);
+}
+.hidden {
+  display: none;
+}
+
+@media (max-width: 765px) {
+  #form {
+    width: 100%;
+  }
+  .tasks-list {
+    width: 100%;
+  }
+  .input-box {
+    width: 100%;
+  }
+  #error-message {
+    width: 100%;
+  }
+}

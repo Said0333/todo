@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="date-box">
+          <div class="date">
+            <p id="kun">21</p>
+            <p id="oy">Febr</p>
+            <p id="yil">2026</p>
+          </div>
+          <p class="time">
+            <span id="soat">15</span>:<span id="minut">10</span>:<span
+              id="sekund"
+              >22</span
+            >
+          </p>
+        </div>
+        <div class="tasks">
+          <h1>Tasks</h1>
+
+          <div class="input-box">
+            <p id="error-message">iltimos task yozing</p>
+          </div>
+          <form id="form">
+            <input name="task" type="text" placeholder="type..." />
+            <button style="border: none; background-color: transparent">
+              <img id="add-button" src="./add.svg" width="45" alt="add" />
+            </button>
+          </form>
+          <ul class="tasks-list">
+            <li class="list">
+              <span id="tesk-text">Ertalab turmoq</span>
+
+              <span class="task-feture">
+                <span id="task-time"> 14.08.2022 </span>
+                <img src="./edit.svg" width="22" id="edit" alt="edit-icon" />
+                <img
+                  src="./delete.svg"
+                  width="22"
+                  id="delete"
+                  alt="delete-icon"
+                />
+              </span>
+            </li>
+            <li class="list">
+              <span id="tesk-text">Ertalab turmoq</span>
+
+              <span class="task-feture">
+                <span id="task-time"> 14.08.2022 </span>
+                <img src="./edit.svg" width="22" id="edit" alt="edit-icon" />
+                <img
+                  src="./delete.svg"
+                  width="22"
+                  id="delete"
+                  alt="delete-icon"
+                />
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="modal hidden">
+          <div class="modal-header">
+            <p>change task</p>
+            <img
+              style="cursor: pointer"
+              id="close-modal"
+              src="./close-modal.svg"
+              width="32"
+              alt="cancel"
+            />
+          </div>
+          <form id="change-form">
+            <input
+              name="change-input"
+              type="text"
+              placeholder="change type..."
+            />
+            <button id="cahnge-task">Change</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
