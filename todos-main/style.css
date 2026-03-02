@@ -147,6 +147,11 @@ body {
   display: none;
 }
 
+.completed{
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
 @media (max-width: 765px) {
   #form {
     width: 100%;
@@ -161,3 +166,5 @@ body {
     width: 100%;
   }
 }
+
+

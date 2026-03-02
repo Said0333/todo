@@ -31,14 +31,16 @@ function setTodo(){
 
 function showTodos(){
     taskLists.innerHTML = "";
-    todos.forEach((item)=>{
-        taskLists.innerHTML += `<li class="list">
+    todos.forEach((item, i)=>{
+        taskLists.innerHTML +=
+        `<li ondblclick="completed(${i})" class="list ${item.completed==true ? "completed " : ""}">
               <span id="tesk-text">${item.title}</span>
 
               <span class="task-feture">
                 <span id="task-time"> ${item.time} </span>
                 <img src="./edit.svg" width="22" id="edit" alt="edit-icon" />
                 <img
+                onclick="handleDelete(${i})"
                   src="./delete.svg"
                   width="22"
                   id="delete"
@@ -49,6 +51,30 @@ function showTodos(){
     })
 }
 if (todos.lenght) showTodos();
+
+// delete function
+function handleDelete(id){
+   let deletedTodo = todos.filter((item, i) => {
+    return id !== i;
+   })
+   todos = deletedTodo
+   showTodos();
+   setTodo();
+}
+
+// completed
+function completed (id){
+    let completedTodo = todos.map((item, i) => {
+        if (id === i){
+            return {...item, completed:item.completed == true ? false : true}
+        }else{
+            return item;
+        }
+})
+todos = completedTodo;
+setTodo();
+showTodos();
+}
 
 // time
 function getTime(){
@@ -77,7 +103,7 @@ getTime();
         });
         setTodo();
         showTodos();
-        console.log(todos);
+     
     }else{
         message.textContent = "iltimos nimadir yoz"
         setTimeout( () => (message.textContent = ""), 1000);
