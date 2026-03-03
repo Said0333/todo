@@ -13,8 +13,11 @@ let formEdit = document.querySelector("#change-form");
 let taskLists = document.querySelector(".tasks-list");
 // message
 let message = document.querySelector("#error-message");
+// modal
+let modal = document.querySelector(".modal")
+let overlay = document.querySelector(".overlay")
 
-
+let editTodo;
 // tekshirish
 
 let todos = JSON.parse(localStorage.getItem("item"))
@@ -38,7 +41,7 @@ function showTodos(){
 
               <span class="task-feture">
                 <span id="task-time"> ${item.time} </span>
-                <img src="./edit.svg" width="22" id="edit" alt="edit-icon" />
+                <img onclick="handleEdit(${i})" src="./edit.svg" width="22" id="edit" alt="edit-icon" />
                 <img
                 onclick="handleDelete(${i})"
                   src="./delete.svg"
@@ -74,6 +77,7 @@ function completed (id){
 todos = completedTodo;
 setTodo();
 showTodos();
+handleEdit();
 }
 
 // time
@@ -105,9 +109,47 @@ getTime();
         showTodos();
      
     }else{
-        message.textContent = "iltimos nimadir yoz"
-        setTimeout( () => (message.textContent = ""), 1000);
+        errorMessage.textContent = "iltimos nimadir yoz"
+        setTimeout( () => (errorMessage.textContent = ""), 1000);
     }
 
     formCreate.reset();
  });
+
+ //edit 
+function handleEdit(id) {
+    editTodo = id;
+    openModal();
+}
+
+function openModal() {
+    modal.classList.remove("hidden")
+    overlay.classList.remove("overlay")
+}
+
+function closeModal() {
+    modal.classList.add("hidden")
+    overlay.classList.add("overlay")
+}
+
+formEdit.addEventListener("submit", (e)=>{
+    e.preventDefault();
+        let textInput = formEdit["change-input"].value.trim();
+ 
+
+    if (textInput) {
+        todos.splice(editTodo, 1,{
+            title: textInput, 
+            time: getTime(), 
+            completed: false,
+        });
+        setTodo();
+        showTodos();
+        closeModal();
+    }else{
+        errorMessage.textContent = "iltimos nimadir yoz"
+        setTimeout( () => (errorMessage.textContent = ""), 1000);
+    }
+
+    formEdit.reset();
+})
